@@ -41,21 +41,32 @@ public class Main {
 		}
 		//Dichiarazione contatore per il calcolo del totale degli alunni promossi.
 		int numeroPromossi = 0;
-		//Ciclo di controllo per ogni studente dell'array classe.
+		//Ciclo di controllo per ogni studente dell'array classe.//Formattazione dell'indice della tabella.
+		System.out.format("%25s %10s %25s %10s %10s %10s %10s", "Id Alunno", "|", "Percentuale Assenze", "|", "Media Voti", "|", "Esito");
+		//Per mandare a capo il separatore
+		System.out.println();
+		//Separatore che divide l'indice dal corpo della tabella
+		System.out.format("%s", "---------------------------------------------------------------------------------------------------------------------");
+	
 		for(int i = 0; i < classe.length; i++) {
 			
 			if(classe[i].calcoloPromozione()) {
-				
-				System.out.println("Lo studente " + classe[i].idStudente + " è stato promosso");
+	
 				//incremento contatore alunni promossi.
 				numeroPromossi++;
+				System.out.println();
+				//Formattazione tabella
+				System.out.format("%25s %10s %25s %10s %10.1f %10s %10s", classe[i].idStudente, "|", classe[i].percentualeAssenze + "%", "|", classe[i].mediaVoti, "|", "Promosso");
 				
-			}else
-				System.out.println("Lo studente " + classe[i].idStudente + " è stato bocciato");
-			
+			}else {
+				
+				System.out.println();
+				//Formattazione tabella
+				System.out.format("%25s %10s %25s %10s %10.1f %10s %10s", classe[i].idStudente, "|", classe[i].percentualeAssenze + "%", "|", classe[i].mediaVoti, "|", "Bocciato");
+			}
 		}
 		//Stampa del numero totale di alunni promossi.
-		System.out.println("Il numero di studenti promossi è: " + numeroPromossi);
+		System.out.println("\nIl numero di studenti promossi è: " + numeroPromossi);
 		//Chiusura dello scanner.
 		scan.close();
 		
